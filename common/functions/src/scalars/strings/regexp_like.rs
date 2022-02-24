@@ -171,7 +171,7 @@ fn a_regexp_binary(
 }
 
 #[inline]
-fn build_regexp_from_pattern(pat: &[u8], mt: Option<&[u8]>) -> Result<BytesRegex> {
+pub fn build_regexp_from_pattern(pat: &[u8], mt: Option<&[u8]>) -> Result<BytesRegex> {
     let pattern = match pat.is_empty() {
         true => "^$",
         false => simdutf8::basic::from_utf8(pat).map_err(|e| {
